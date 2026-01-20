@@ -35,3 +35,18 @@ export const getMovieDetails = async (movieId: number) : Promise<Movie> => {
 }
 
 
+export const getMoviesByCategory = async (category: string, page = 1) : Promise<MovieResponse> => {
+
+  const response = await movieApi.get(`/movie/${category}`, {
+    params: {page},
+  });
+  return response.data;
+}
+ 
+export const categories: Array<{ id: string; name: string }> = [
+  {id: 'popular', name: 'populaires'},
+   {id : 'top_rated', name: 'Mieux notés'}, 
+   {id: 'upcoming', name: 'à venir'},
+    {id: 'now_playing', name: 'Au cinéma'}
+];
+
